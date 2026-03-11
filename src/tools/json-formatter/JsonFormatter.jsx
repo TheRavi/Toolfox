@@ -6,7 +6,7 @@ import StatusBar from '../../components/StatusBar';
 import CommandPalette from '../../components/CommandPalette';
 import { getIndentation, setIndentation } from '../../core/settingsStore';
 
-const INITIAL_INPUT = '{\n  "name": "Devtils",\n  "version": 1,\n  "features": ["format", "minify", "validate"]\n}';
+const INITIAL_INPUT = '{\n  "name": "Toolfox",\n  "version": 1,\n  "features": ["format", "minify", "validate"]\n}';
 
 export default function JsonFormatter() {
   const [input, setInput] = useState(INITIAL_INPUT);
