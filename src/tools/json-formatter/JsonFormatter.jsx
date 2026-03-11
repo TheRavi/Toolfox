@@ -258,7 +258,7 @@ export default function JsonFormatter() {
       />
 
       <Toolbar>
-        <div className="flex flex-wrap items-center gap-2 overflow-x-hidden">
+        <div className="flex flex-nowrap items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-x-hidden">
           <button
             type="button"
             onClick={() => runOperation('format')}
@@ -292,7 +292,7 @@ export default function JsonFormatter() {
           </button>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2 overflow-x-hidden">
+        <div className="flex flex-nowrap items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-x-hidden">
           <p className="mr-1 shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
             ⌘↵ Format · ⌘⇧M Minify · ⌘⇧V Validate · ⌘F Search
           </p>
@@ -320,7 +320,7 @@ export default function JsonFormatter() {
               }
             }}
             placeholder="Search output"
-            className="w-44 shrink-0 rounded-md border border-amber-900/20 bg-white px-2.5 py-1.5 text-sm text-amber-950 outline-none placeholder:text-amber-900/40 focus:border-cyan-600 dark:border-amber-200/20 dark:bg-[#201b16] dark:text-amber-100 dark:placeholder:text-amber-100/45 dark:focus:border-cyan-400"
+            className="w-36 shrink-0 rounded-md border border-amber-900/20 bg-white px-2.5 py-1.5 text-sm text-amber-950 outline-none placeholder:text-amber-900/40 focus:border-cyan-600 sm:w-44 dark:border-amber-200/20 dark:bg-[#201b16] dark:text-amber-100 dark:placeholder:text-amber-100/45 dark:focus:border-cyan-400"
           />
 
           <button

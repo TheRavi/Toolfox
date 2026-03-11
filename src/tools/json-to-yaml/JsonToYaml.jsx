@@ -159,9 +159,9 @@ export default function JsonToYaml() {
       }
     }
 
-    window.addEventListener('keydown', onKeyDown);
+    globalThis.addEventListener('keydown', onKeyDown);
     return () => {
-      window.removeEventListener('keydown', onKeyDown);
+      globalThis.removeEventListener('keydown', onKeyDown);
     };
   }, [runConversion, mode, convertToYAML, convertToJSON, onCopyOutput]);
 
@@ -175,7 +175,7 @@ export default function JsonToYaml() {
           <button
             type="button"
             onClick={convertToYAML}
-            className={`shrink-0 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`shrink-0 rounded-md border px-3 py-2 text-sm font-medium transition-colors md:py-1.5 ${
               mode === 'json-to-yaml'
                 ? 'border-cyan-700/30 bg-cyan-100/75 text-cyan-900 hover:bg-cyan-200/80 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45'
                 : 'border-amber-900/25 bg-white/95 text-amber-900 hover:bg-amber-100/75 dark:border-amber-200/25 dark:bg-[#2a241d]/90 dark:text-amber-100 dark:hover:bg-[#352d23]'
@@ -186,7 +186,7 @@ export default function JsonToYaml() {
           <button
             type="button"
             onClick={convertToJSON}
-            className={`shrink-0 rounded-md border px-3 py-1.5 text-sm font-medium transition-colors ${
+            className={`shrink-0 rounded-md border px-3 py-2 text-sm font-medium transition-colors md:py-1.5 ${
               mode === 'yaml-to-json'
                 ? 'border-cyan-700/30 bg-cyan-100/75 text-cyan-900 hover:bg-cyan-200/80 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45'
                 : 'border-amber-900/25 bg-white/95 text-amber-900 hover:bg-amber-100/75 dark:border-amber-200/25 dark:bg-[#2a241d]/90 dark:text-amber-100 dark:hover:bg-[#352d23]'
@@ -200,7 +200,7 @@ export default function JsonToYaml() {
           <button
             type="button"
             onClick={onCopyOutput}
-            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/70 px-3 py-1.5 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/75 dark:border-cyan-300/35 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
+            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/70 px-3 py-2 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/75 md:py-1.5 dark:border-cyan-300/35 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
           >
             Copy Output
           </button>
@@ -211,7 +211,7 @@ export default function JsonToYaml() {
             ⌘↵ Convert · ⌘⇧Y JSON→YAML · ⌘⇧J YAML→JSON · ⌘C Copy
           </p>
 
-          <label className="shrink-0 flex items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1 text-sm text-amber-900 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
+          <label className="shrink-0 flex items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1.5 text-sm text-amber-900 md:py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
             Indent
             <select
               value={indent}
@@ -227,7 +227,7 @@ export default function JsonToYaml() {
 
       <StatusBar status={status.type} message={status.message} />
 
-      <div className="min-h-0 flex-1 p-3">
+      <div className="min-h-0 flex-1 p-2 md:p-3">
         <div className="mb-2 grid grid-cols-2 gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900/70 dark:text-amber-100/70">
           <p className="rounded-md border border-amber-900/20 bg-white px-2 py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/75">
             {mode === 'json-to-yaml' ? 'Input (JSON)' : 'Input (YAML)'}

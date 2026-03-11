@@ -14,9 +14,9 @@ export default function StatusBar({ message, status = 'idle' }) {
         : 'bg-zinc-500';
 
   return (
-    <div className="flex items-center gap-2 border-t border-black/10 bg-[#fffbf4]/90 px-4 py-2 transition-colors dark:border-white/10 dark:bg-[#161412]/85">
+    <div className="flex items-start gap-2 border-t border-black/10 bg-[#fffbf4]/90 px-3 py-2 transition-colors md:items-center md:px-4 dark:border-white/10 dark:bg-[#161412]/85">
       <span className={`h-2 w-2 shrink-0 rounded-full ${dotClass}`} />
-      <p className={`text-xs font-semibold tracking-wide ${toneClass}`}>{message}</p>
+      <p className={`min-w-0 break-all text-[11px] font-semibold tracking-wide md:text-xs ${toneClass}`}>{message}</p>
     </div>
   );
 }

@@ -104,11 +104,11 @@ export default function UuidGenerator() {
   return (
     <div className="relative flex h-full flex-col">
       <Toolbar>
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-nowrap items-center gap-2 overflow-x-auto md:flex-wrap">
           <button
             type="button"
             onClick={generate}
-            className="rounded-md border border-cyan-700/30 bg-cyan-100/75 px-3 py-1.5 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/80 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45"
+            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/75 px-3 py-2 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/80 md:py-1.5 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45"
           >
             Generate
           </button>
@@ -116,14 +116,14 @@ export default function UuidGenerator() {
           <button
             type="button"
             onClick={copyAll}
-            className="rounded-md border border-amber-900/25 bg-amber-100/70 px-3 py-1.5 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-200/80 dark:border-amber-200/25 dark:bg-amber-800/25 dark:text-amber-100 dark:hover:bg-amber-700/35"
+            className="shrink-0 rounded-md border border-amber-900/25 bg-amber-100/70 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-200/80 md:py-1.5 dark:border-amber-200/25 dark:bg-amber-800/25 dark:text-amber-100 dark:hover:bg-amber-700/35"
           >
             Copy All
           </button>
         </div>
 
-        <div className="flex items-center gap-2">
-          <label className="flex items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1 text-sm text-amber-900 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
+        <div className="flex flex-nowrap items-center gap-2 overflow-x-auto md:flex-wrap">
+          <label className="flex shrink-0 items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1.5 text-sm text-amber-900 md:py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
             Count
             <input
               type="number"
@@ -138,7 +138,7 @@ export default function UuidGenerator() {
             />
           </label>
 
-          <p className="rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
+          <p className="shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
             Generates RFC 4122 UUIDs using Web Crypto.
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function UuidGenerator() {
                 <button
                   type="button"
                   onClick={() => copyOne(value)}
-                  className="shrink-0 rounded border border-cyan-800/30 bg-cyan-50 px-2 py-0.5 text-xs font-semibold text-cyan-900 transition-colors hover:bg-cyan-100 dark:border-cyan-300/25 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
+                  className="shrink-0 rounded border border-cyan-800/30 bg-cyan-50 px-2.5 py-1 text-[11px] font-semibold text-cyan-900 transition-colors hover:bg-cyan-100 dark:border-cyan-300/25 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
                 >
                   Copy
                 </button>

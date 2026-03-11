@@ -105,21 +105,21 @@ export default function XmlFormatter() {
           <button
             type="button"
             onClick={runFormat}
-            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/75 px-3 py-1.5 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/80 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45"
+            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/75 px-3 py-2 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/80 md:py-1.5 dark:border-cyan-300/35 dark:bg-cyan-900/35 dark:text-cyan-100 dark:hover:bg-cyan-800/45"
           >
             Format
           </button>
           <button
             type="button"
             onClick={runMinify}
-            className="shrink-0 rounded-md border border-amber-900/25 bg-amber-100/70 px-3 py-1.5 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-200/80 dark:border-amber-200/25 dark:bg-amber-800/25 dark:text-amber-100 dark:hover:bg-amber-700/35"
+            className="shrink-0 rounded-md border border-amber-900/25 bg-amber-100/70 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-200/80 md:py-1.5 dark:border-amber-200/25 dark:bg-amber-800/25 dark:text-amber-100 dark:hover:bg-amber-700/35"
           >
             Minify
           </button>
           <button
             type="button"
             onClick={runValidate}
-            className="shrink-0 rounded-md border border-amber-900/25 bg-white/95 px-3 py-1.5 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-100/75 dark:border-amber-200/25 dark:bg-[#2a241d]/90 dark:text-amber-100 dark:hover:bg-[#352d23]"
+            className="shrink-0 rounded-md border border-amber-900/25 bg-white/95 px-3 py-2 text-sm font-semibold text-amber-900 transition-colors hover:bg-amber-100/75 md:py-1.5 dark:border-amber-200/25 dark:bg-[#2a241d]/90 dark:text-amber-100 dark:hover:bg-[#352d23]"
           >
             Validate
           </button>
@@ -129,7 +129,7 @@ export default function XmlFormatter() {
           <button
             type="button"
             onClick={onCopyOutput}
-            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/70 px-3 py-1.5 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/75 dark:border-cyan-300/35 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
+            className="shrink-0 rounded-md border border-cyan-700/30 bg-cyan-100/70 px-3 py-2 text-sm font-semibold text-cyan-900 transition-colors hover:bg-cyan-200/75 md:py-1.5 dark:border-cyan-300/35 dark:bg-cyan-900/30 dark:text-cyan-100 dark:hover:bg-cyan-800/40"
           >
             Copy Output
           </button>
@@ -140,7 +140,7 @@ export default function XmlFormatter() {
             Format, minify, and validate XML.
           </p>
 
-          <label className="flex shrink-0 items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1 text-sm text-amber-900 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
+          <label className="flex shrink-0 items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1.5 text-sm text-amber-900 md:py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
             Indent
             <select
               value={indent}
@@ -156,7 +156,7 @@ export default function XmlFormatter() {
 
       <StatusBar status={status.type} message={status.message} />
 
-      <div className="min-h-0 flex-1 p-3">
+      <div className="min-h-0 flex-1 p-2 md:p-3">
         <div className="mb-2 grid grid-cols-2 gap-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-amber-900/70 dark:text-amber-100/70">
           <p className="rounded-md border border-amber-900/20 bg-white px-2 py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/75">
             Input (XML)
