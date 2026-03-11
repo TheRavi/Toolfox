@@ -1,6 +1,6 @@
-# Devtils
+# Toolfox
 
-Devtils is a desktop-first developer utility toolbox built with React + Vite and packaged with Tauri.
+Toolfox is a desktop-first developer utility toolbox built with React + Vite and packaged with Tauri.
 
 The app ships multiple focused tools behind a single UI shell, with dynamic tool registration and worker-based processing for heavy operations.
 

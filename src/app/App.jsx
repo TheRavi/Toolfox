@@ -143,7 +143,7 @@ export default function App() {
       <div className="relative flex h-full overflow-hidden rounded-[24px] border border-black/10 bg-[#fff7eb]/88 shadow-[0_20px_60px_-28px_rgba(66,32,6,0.45)] backdrop-blur-md transition-colors md:flex-row dark:border-white/10 dark:bg-[#12100e]/84 dark:shadow-[0_18px_44px_-24px_rgba(0,0,0,0.7)]">
         <aside className="flex h-64 w-full shrink-0 flex-col border-b border-black/10 bg-[#fff4e4]/85 backdrop-blur-sm transition-colors md:h-auto md:w-80 md:border-b-0 md:border-r dark:border-white/10 dark:bg-[#181512]/88">
           <div className="border-b border-black/10 px-5 py-4 dark:border-white/10">
-            <h1 className="text-lg font-bold tracking-[0.02em] text-[#23170f] dark:text-zinc-100">Devtils</h1>
+            <h1 className="text-lg font-bold tracking-[0.02em] text-[#23170f] dark:text-zinc-100">Toolfox</h1>
             <p className="mt-1 text-[11px] uppercase tracking-[0.14em] text-amber-900/65 dark:text-zinc-400">Crafted Utility Suite</p>
           </div>
 
