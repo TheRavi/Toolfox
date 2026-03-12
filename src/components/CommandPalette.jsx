@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { enter, mod, shift } from '../core/platform.js';
 
 const DEFAULT_COMMANDS = [
-  { id: 'format', label: 'Format JSON', category: 'Formatter', keys: '⌘↵' },
-  { id: 'minify', label: 'Minify JSON', category: 'Formatter', keys: '⌘⇧M' },
-  { id: 'validate', label: 'Validate JSON', category: 'Formatter', keys: '⌘⇧V' },
+  { id: 'format', label: 'Format JSON', category: 'Formatter', keys: `${mod}${enter}` },
+  { id: 'minify', label: 'Minify JSON', category: 'Formatter', keys: `${mod}${shift}M` },
+  { id: 'validate', label: 'Validate JSON', category: 'Formatter', keys: `${mod}${shift}V` },
   { id: 'copy', label: 'Copy Output', category: 'Formatter', keys: 'N/A' },
-  { id: 'search', label: 'Search Output', category: 'Formatter', keys: '⌘F' },
-  { id: 'theme', label: 'Toggle Theme', category: 'Settings', keys: '⌘J' },
+  { id: 'search', label: 'Search Output', category: 'Formatter', keys: `${mod}F` },
+  { id: 'theme', label: 'Toggle Theme', category: 'Settings', keys: `${mod}J` },
 ];
 
 function rankMatch(query, text) {

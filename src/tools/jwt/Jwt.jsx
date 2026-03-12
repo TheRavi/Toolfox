@@ -3,6 +3,7 @@ import Editor from '@monaco-editor/react';
 import SplitPane from '../../components/SplitPane';
 import Toolbar from '../../components/Toolbar';
 import StatusBar from '../../components/StatusBar';
+import { enter, mod, shift } from '../../core/platform.js';
 
 const INITIAL_TOKEN =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJzdWIiOiJ0b29sZm94Iiwicm9sZSI6ImRldiJ9.';
@@ -241,7 +242,7 @@ export default function Jwt() {
               </label>
 
               <p className="shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
-                ⌘↵ Run · ⌘⇧C Copy
+                {`${mod}${enter} Run · ${mod}${shift}C Copy`}
               </p>
             </>
           ) : (
@@ -258,7 +259,7 @@ export default function Jwt() {
               </label>
 
               <p className="shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
-                ⌘↵ Run · ⌘⇧C Copy
+                {`${mod}${enter} Run · ${mod}${shift}C Copy`}
               </p>
             </>
           )}

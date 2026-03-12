@@ -4,6 +4,7 @@ import SplitPane from '../../components/SplitPane';
 import Toolbar from '../../components/Toolbar';
 import StatusBar from '../../components/StatusBar';
 import { getIndentation, setIndentation } from '../../core/settingsStore';
+import { enter, mod, shift } from '../../core/platform.js';
 
 const INITIAL_JSON = '{\n  "name": "YAML Converter",\n  "version": 1,\n  "features": ["json-to-yaml", "yaml-to-json"]\n}';
 
@@ -208,7 +209,7 @@ export default function JsonToYaml() {
 
         <div className="flex flex-nowrap items-center gap-2 overflow-x-auto">
           <p className="mr-1 shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
-            ⌘↵ Convert · ⌘⇧Y JSON→YAML · ⌘⇧J YAML→JSON · ⌘C Copy
+            {`${mod}${enter} Convert · ${mod}${shift}Y JSON→YAML · ${mod}${shift}J YAML→JSON · ${mod}C Copy`}
           </p>
 
           <label className="shrink-0 flex items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1.5 text-sm text-amber-900 md:py-1 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">

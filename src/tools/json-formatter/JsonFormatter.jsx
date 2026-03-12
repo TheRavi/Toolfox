@@ -5,6 +5,7 @@ import Toolbar from '../../components/Toolbar';
 import StatusBar from '../../components/StatusBar';
 import CommandPalette from '../../components/CommandPalette';
 import { getIndentation, setIndentation } from '../../core/settingsStore';
+import { enter, mod, shift } from '../../core/platform.js';
 
 const INITIAL_INPUT = '{\n  "name": "Toolfox",\n  "version": 1,\n  "features": ["format", "minify", "validate"]\n}';
 
@@ -294,7 +295,7 @@ export default function JsonFormatter() {
 
         <div className="flex flex-nowrap items-center gap-2 overflow-x-auto md:flex-wrap md:overflow-x-hidden">
           <p className="mr-1 shrink-0 rounded-md border border-amber-900/20 bg-amber-50/90 px-2 py-1 text-[11px] font-medium uppercase tracking-wide text-amber-900/80 dark:border-amber-200/15 dark:bg-[#2a241d]/75 dark:text-amber-100/85">
-            ⌘↵ Format · ⌘⇧M Minify · ⌘⇧V Validate · ⌘F Search
+            {`${mod}${enter} Format · ${mod}${shift}M Minify · ${mod}${shift}V Validate · ${mod}F Search`}
           </p>
 
           <label className="shrink-0 flex items-center gap-2 rounded-md border border-amber-900/20 bg-white/95 px-2.5 py-1 text-sm text-amber-900 dark:border-amber-200/20 dark:bg-[#2a241d]/90 dark:text-amber-100">
