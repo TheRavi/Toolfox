@@ -50,11 +50,42 @@ function createBuilder({ format, indentSize }) {
   });
 }
 
+function stripWhitespaceTextNodes(nodes) {
+  if (!Array.isArray(nodes)) {
+    return nodes;
+  }
+
+  return nodes
+    .map((entry) => {
+      if (!entry || typeof entry !== 'object') {
+        return entry;
+      }
+
+      const next = {};
+
+      Object.entries(entry).forEach(([key, value]) => {
+        if (key === '#text' && typeof value === 'string' && value.trim() === '') {
+          return;
+        }
+
+        if (Array.isArray(value)) {
+          next[key] = stripWhitespaceTextNodes(value);
+          return;
+        }
+
+        next[key] = value;
+      });
+
+      return Object.keys(next).length ? next : null;
+    })
+    .filter(Boolean);
+}
+
 function formatXml(text, indentSize) {
   const { declaration, body } = splitXmlDeclaration(text);
   validateXml(body || text);
   const parser = createParser();
-  const parsed = parser.parse(body || text);
+  const parsed = stripWhitespaceTextNodes(parser.parse(body || text));
   const builder = createBuilder({ format: true, indentSize });
   const output = builder.build(parsed).trim();
   return declaration ? `${declaration}\n${output}` : output;
@@ -64,13 +95,13 @@ function minifyXml(text) {
   const { declaration, body } = splitXmlDeclaration(text);
   validateXml(body || text);
   const parser = createParser();
-  const parsed = parser.parse(body || text);
+  const parsed = stripWhitespaceTextNodes(parser.parse(body || text));
   const builder = createBuilder({ format: false, indentSize: 2 });
-  const output = builder.build(parsed).replace(/>\s+</g, '><').trim();
+  const output = builder.build(parsed).replaceAll(/>\s+</g, '><').trim();
   return declaration ? `${declaration}${output}` : output;
 }
 
-self.onmessage = (event) => {
+globalThis.onmessage = (event) => {
   const { type, payload } = event.data ?? {};
 
   try {
@@ -81,24 +112,24 @@ self.onmessage = (event) => {
     }
 
     if (type === 'format') {
-      self.postMessage({ success: true, result: formatXml(text, payload?.indent) });
+      globalThis.postMessage({ success: true, result: formatXml(text, payload?.indent) });
       return;
     }
 
     if (type === 'minify') {
-      self.postMessage({ success: true, result: minifyXml(text) });
+      globalThis.postMessage({ success: true, result: minifyXml(text) });
       return;
     }
 
     if (type === 'validate') {
       validateXml(text);
-      self.postMessage({ success: true, result: 'valid' });
+      globalThis.postMessage({ success: true, result: 'valid' });
       return;
     }
 
     throw new Error(`Unknown operation: ${type}`);
   } catch (error) {
-    self.postMessage({
+    globalThis.postMessage({
       success: false,
       error: {
         message: error?.message || 'XML operation failed.',
