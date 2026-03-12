@@ -6,47 +6,56 @@ The app ships multiple focused tools behind a single UI shell, with dynamic tool
 
 ## Current Tools
 
-- JSON Formatter
-	- Format
-	- Minify
-	- Validate
-	- Search in output
-- JSON <-> YAML
-	- JSON to YAML conversion
-	- YAML to JSON conversion
-- XML Formatter
-	- Format
-	- Minify
-	- Validate
-- ULID Generator
-	- Batch generation
-	- Monotonic ULIDs within same millisecond
-	- Per-row and copy-all actions
-- UUID Generator
-	- Batch generation
-	- Per-row and copy-all actions
+### Text
+- **Text Diff** — Side-by-side Monaco diff editor with live LCS-based diff summary (hunks, lines added/removed), swap sides, and whitespace options
+
+### Formatters
+- **JSON Formatter** — Format, minify, and validate JSON with output search
+- **JSON ↔ YAML** — Convert between JSON and YAML in either direction
+- **XML Formatter** — Format and minify XML
+
+### Generators
+- **ULID Generator** — Batch generation of monotonic ULIDs with per-row and copy-all actions
+- **UUID Generator** — Batch generation of UUIDs with per-row and copy-all actions
+- **Lorem Ipsum** — Configurable placeholder text generation
+
+### Encoders / Decoders
+- **JWT** — Decode, encode (HS256 / none), and verify JWTs using Web Crypto with no external dependencies
+
+## Keyboard Shortcuts
+
+Shortcuts adapt to the current OS — `⌘` on macOS, `Ctrl` on Windows/Linux.
+
+| Tool | Shortcut | Action |
+|---|---|---|
+| JSON Formatter | `⌘↵` | Format |
+| JSON Formatter | `⌘⇧M` | Minify |
+| JSON Formatter | `⌘⇧V` | Validate |
+| JSON Formatter | `⌘F` | Focus search |
+| JSON ↔ YAML | `⌘↵` | Convert |
+| JSON ↔ YAML | `⌘⇧Y` | JSON → YAML |
+| JSON ↔ YAML | `⌘⇧J` | YAML → JSON |
+| JSON ↔ YAML | `⌘C` | Copy output |
+| JWT | `⌘↵` | Run operation |
+| JWT | `⌘⇧C` | Copy output |
+| Any tool | `⌘⇧P` | Open command palette |
 
 ## Tech Stack
 
 - React 19
 - Vite 7
 - Tailwind CSS 4
-- Monaco Editor
+- Monaco Editor (`@monaco-editor/react`)
 - Tauri 2 (desktop packaging)
-- Web Workers for parser/generator workloads
+- Web Workers for parser/generator/crypto workloads
 
 ## Project Structure
 
-- src/app
-	- Main shell and tool navigation
-- src/components
-	- Shared UI primitives (toolbar, split pane, status bar, etc.)
-- src/core
-	- Tool registry and local settings store
-- src/tools
-	- One folder per tool (metadata + component + optional worker)
-- src-tauri
-	- Tauri desktop configuration and Rust entrypoint
+- `src/app` — Main shell and tool navigation
+- `src/components` — Shared UI primitives (toolbar, split pane, status bar, command palette)
+- `src/core` — Tool registry, settings store, and platform utilities
+- `src/tools` — One folder per tool (metadata + component + optional worker)
+- `src-tauri` — Tauri desktop configuration and Rust entrypoint
 
 ## Getting Started
 
@@ -90,21 +99,25 @@ npm run tauri:build
 
 ## Add a New Tool
 
-Tool discovery is file-system based via the registry.
+Tool discovery is file-system based — no central registry edits needed.
 
 1. Create a folder under `src/tools/<tool-name>/`
-2. Add `toolMeta.js` with:
-	 - `id`
-	 - `name`
-	 - `icon`
-	 - `category`
-3. Add component file named `<ToolNamePascalCase>.jsx`
-	 - Example: `src/tools/xml-formatter/XmlFormatter.jsx`
-4. If needed, add a worker file for heavy work.
+2. Add `toolMeta.js` exporting a `toolMeta` object with:
+   - `id` — unique kebab-case identifier
+   - `name` — display name
+   - `icon` — emoji or short string
+   - `category` — groups tools in the sidebar (create a new string to add a new category)
+3. Add a component file named `<ToolNamePascalCase>.jsx`
+   - Example: `src/tools/xml-formatter/XmlFormatter.jsx`
+4. Optionally add a `<toolName>Worker.js` for CPU-intensive work. Spawn it with:
+   ```js
+   new Worker(new URL('./myWorker.js', import.meta.url), { type: 'module' })
+   ```
 
-The registry prefers `<ToolNamePascalCase>.jsx`, then `index.jsx`.
+The registry resolves components by preferring `<ToolNamePascalCase>.jsx`, then `index.jsx`.
 
 ## Notes
 
-- User preferences (theme, indentation, last tool) are stored in localStorage.
+- User preferences (theme, indentation, last tool) are persisted in `localStorage`.
+- Keyboard shortcut display adapts to macOS vs Windows/Linux via `src/core/platform.js`.
 - For security hardening in desktop builds, review Tauri CSP settings before release.
