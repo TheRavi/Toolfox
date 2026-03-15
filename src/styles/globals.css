@@ -45,3 +45,27 @@ pre,
 samp {
   font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
+
+.sidebar-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(180, 83, 9, 0.52) rgba(245, 237, 223, 0.96);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  background: rgba(245, 237, 223, 0.96);
+  border-radius: 999px;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(180, 83, 9, 0.58);
+  border-radius: 999px;
+  border: 2px solid rgba(245, 237, 223, 0.96);
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(146, 64, 14, 0.7);
+}
